@@ -32,7 +32,7 @@ export function getReturnDataFromError(error: any): string {
     throw error;
   }
 
-  const returnData = typeof errorData === "string" ? errorData : errorData.data;
+  const returnData = typeof errorData === "string" ? errorData : errorData.data ?? errorData.result;
 
   if (returnData === undefined || typeof returnData !== "string") {
     throw error;
