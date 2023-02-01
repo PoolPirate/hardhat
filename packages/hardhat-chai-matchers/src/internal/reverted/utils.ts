@@ -26,13 +26,13 @@ export function getReturnDataFromError(error: any): string {
   // some property that doesn't exist on Error
   error = error as any;
 
-  const errorData = error.data ?? error.error?.data;
+  const errorData = error.error?.data ?? error.data;
 
   if (errorData === undefined) {
     throw error;
   }
 
-  const returnData = typeof errorData === "string" ? errorData : errorData.data ?? errorData.result;
+  const returnData = typeof errorData === "string" ? errorData : errorData.data ?? errorData;
 
   if (returnData === undefined || typeof returnData !== "string") {
     throw error;
